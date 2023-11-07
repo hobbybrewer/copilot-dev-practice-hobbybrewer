@@ -1,0 +1,185 @@
+{
+	"movies": {
+		"_id": {
+			"primaryKey": true,
+			"type": "Object",
+			"required": true
+		},
+		"plot": {
+			"type": "string",
+			"required": true
+		},
+		"genres": {
+			"type": "Array",
+			"required": true
+		},
+		"runtime": {
+			"type": "number",
+			"required": true
+		},
+		"cast": {
+			"type": "Array",
+			"required": true
+		},
+		"poster": {
+			"type": "string",
+			"required": true
+		},
+		"title": {
+			"key": true,
+			"type": "string",
+			"required": true
+		},
+		"fullplot": {
+			"type": "string",
+			"required": true
+		},
+		"languages": {
+			"type": "Array",
+			"required": true
+		},
+		"released": {
+			"type": "Date",
+			"required": true
+		},
+		"directors": {
+			"type": "Array",
+			"required": true
+		},
+		"rated": {
+			"type": "string",
+			"required": true
+		},
+		"awards": {
+			"type": "Object",
+			"structure": {
+				"wins": {
+					"type": "number",
+					"required": true
+				},
+				"nominations": {
+					"type": "number",
+					"required": true
+				},
+				"text": {
+					"type": "string",
+					"required": true
+				}
+			},
+			"required": true
+		},
+		"num_mflix_comments": {
+			"type": "number",
+			"required": true
+		},
+		"writers": {
+			"type": "Array",
+			"required": true
+		},
+		"lastupdated": {
+			"type": "string",
+			"required": true
+		},
+		"countries": {
+			"type": "Array",
+			"required": true
+		},
+		"year": {
+			"type": "number",
+			"required": true
+		},
+		"imdb": {
+			"type": "Object",
+			"structure": {
+				"rating": {
+					"type": "number",
+					"required": true
+				},
+				"votes": {
+					"type": "number",
+					"required": true
+				},
+				"id": {
+					"type": "number",
+					"required": true
+				}
+			},
+			"required": true
+		},
+		"type": {
+			"type": "string",
+			"required": true
+		},
+		"tomatoes": {
+			"type": "Object",
+			"structure": {
+				"viewer": {
+					"type": "Object",
+					"structure": {
+						"rating": {
+							"type": "number",
+							"required": true
+						},
+						"numReviews": {
+							"type": "number",
+							"required": true
+						},
+						"meter": {
+							"type": "number",
+							"required": true
+						}
+					},
+					"required": true
+				},
+				"website": {
+					"type": "string",
+					"required": true
+				},
+				"fresh": {
+					"type": "number",
+					"required": true
+				},
+				"critic": {
+					"type": "Object",
+					"structure": {
+						"rating": {
+							"type": "number",
+							"required": true
+						},
+						"numReviews": {
+							"type": "number",
+							"required": true
+						},
+						"meter": {
+							"type": "number",
+							"required": true
+						}
+					},
+					"required": true
+				},
+				"lastUpdated": {
+					"type": "Date",
+					"required": true
+				},
+				"dvd": {
+					"type": "Date",
+					"required": true
+				},
+				"production": {
+					"key": true,
+					"type": "string",
+					"required": true
+				},
+				"rotten": {
+					"type": "number",
+					"required": true
+				},
+				"consensus": {
+					"type": "string",
+					"required": true
+				}
+			},
+			"required": true
+		}
+	}
+}

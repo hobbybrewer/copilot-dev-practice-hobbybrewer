@@ -1,0 +1,57 @@
+
+
+http://localhost:8080/api/model/102995
+User-Agent: rest-client
+
+###
+PUT http://localhost:8080/api/model/102995 HTTP/1.1
+content-type: application/json
+
+{"listing_url":"https://www.airbnb.com/rooms/102995","name":"UWS Brownstone Prime"}
+
+###
+
+http://localhost:8080/api/model?page=1&size=10
+User-Agent: rest-client
+Accept-Language: en-GB,en-US;q=0.8,en;q=0.6,zh-CN;q=0.4
+Content-Type: application/json
+
+### 
+
+http://localhost:8080/api/model?search=UWS%20Brownstone
+User-Agent: rest-client
+Accept-Language: en-GB,en-US;q=0.8,en;q=0.6,zh-CN;q=0.4
+Content-Type: application/json
+
+###
+
+http://localhost:8080/api/model?page=1&size=10&search=Roof
+User-Agent: rest-client
+Accept-Language: en-GB,en-US;q=0.8,en;q=0.6,zh-CN;q=0.4
+Content-Type: application/json
+
+###
+
+http://localhost:8080/api/model?page=all
+User-Agent: rest-client
+Accept-Language: en-GB,en-US;q=0.8,en;q=0.6,zh-CN;q=0.4
+Content-Type: application/json
+
+###
+
+http://localhost:8080/api/model?page=1&size=10
+User-Agent: rest-client
+Accept-Language: en-GB,en-US;q=0.8,en;q=0.6,zh-CN;q=0.4
+Content-Type: application/json
+#Hong Kong
+#X-Forwarded-For-IP: 8.210.96.219
+#Beyoglu, Turkey
+#X-Forwarded-For-IP: 78.135.85.96 
+#Porta Portugal
+#X-Forwarded-For-IP: 188.83.242.122
+#Rio De Janeiro
+X-Forwarded-For-IP: 200.20.0.88
+#Barcelona, Spain
+#X-Forwarded-For-IP: 2.152.105.111
+
+###

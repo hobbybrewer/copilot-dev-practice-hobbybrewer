@@ -1,0 +1,27 @@
+on:
+  create
+
+env:
+  ASSIGNEE: ${{ github.actor }}
+
+jobs:
+  create-issue:
+    if: github.event.ref == github.event.master_branch
+    name: Create issue from template
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: JasonEtco/create-an-issue@v2
+        name: Create activity 1 issue
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          filename: .github/activity-1-template.md
+          assignees: ${{ env.ASSIGNEE }}
+      - uses: JasonEtco/create-an-issue@v2
+        name: Create activity 2 issue
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          filename: .github/activity-2-template.md
+          assignees: ${{ env.ASSIGNEE }}

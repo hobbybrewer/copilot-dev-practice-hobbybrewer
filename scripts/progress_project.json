@@ -1,0 +1,90 @@
+{
+    "data": {
+        "node": {
+            "fields": {
+                "nodes": [
+                    {
+                        "id": "PVTF_lADOB1l0iM4AXa6zzgO-Jag",
+                        "name": "Title"
+                    },
+                    {
+                        "id": "PVTF_lADOB1l0iM4AXa6zzgO-Jak",
+                        "name": "Assignees"
+                    },
+                    {
+                        "id": "PVTSSF_lADOB1l0iM4AXa6zzgO-Jao",
+                        "name": "Status",
+                        "options": [
+                            {
+                                "id": "f75ad846",
+                                "name": "Todo"
+                            },
+                            {
+                                "id": "47fc9ee4",
+                                "name": "In Progress"
+                            },
+                            {
+                                "id": "98236657",
+                                "name": "Done"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "PVTF_lADOB1l0iM4AXa6zzgO-Jas",
+                        "name": "Labels"
+                    },
+                    {
+                        "id": "PVTF_lADOB1l0iM4AXa6zzgO-Jaw",
+                        "name": "Linked pull requests"
+                    },
+                    {
+                        "id": "PVTF_lADOB1l0iM4AXa6zzgO-Ja4",
+                        "name": "Reviewers"
+                    },
+                    {
+                        "id": "PVTF_lADOB1l0iM4AXa6zzgO-Ja8",
+                        "name": "Repository"
+                    },
+                    {
+                        "id": "PVTF_lADOB1l0iM4AXa6zzgO-JbA",
+                        "name": "Milestone"
+                    },
+                    {
+                        "id": "PVTSSF_lADOB1l0iM4AXa6zzgO-Juc",
+                        "name": "Progress",
+                        "options": [
+                            {
+                                "id": "02cde7b5",
+                                "name": "Codespace Created"
+                            },
+                            {
+                                "id": "cfddcb45",
+                                "name": "Activity 1 - Steps 1"
+                            },
+                            {
+                                "id": "8e83b234",
+                                "name": "Activity 1 - Steps 2"
+                            },
+                            {
+                                "id": "8f3d3a2c",
+                                "name": "Activity 2 - Steps 1"
+                            },
+                            {
+                                "id": "a753558a",
+                                "name": "Activity 2 - Steps 2"
+                            },
+                            {
+                                "id": "a8ddf0ac",
+                                "name": "Activity 3 - Steps 1"
+                            },
+                            {
+                                "id": "3bd59492",
+                                "name": "Activity 3 - Steps 2"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

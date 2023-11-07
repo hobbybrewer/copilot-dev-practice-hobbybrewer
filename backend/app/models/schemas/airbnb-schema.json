@@ -1,0 +1,463 @@
+{
+	"listingsAndReviews": {
+		"_id": {
+			"type": "string",
+			"required": true
+		},
+		"listing_url": {
+			"type": "string",
+			"required": true
+		},
+		"name": {
+			"type": "string",
+			"required": true
+		},
+		"summary": {
+			"type": "string",
+			"required": true
+		},
+		"space": {
+			"type": "string",
+			"required": true
+		},
+		"description": {
+			"type": "string",
+			"required": true
+		},
+		"neighborhood_overview": {
+			"type": "string",
+			"required": true
+		},
+		"notes": {
+			"type": "string",
+			"required": true
+		},
+		"transit": {
+			"type": "string",
+			"required": true
+		},
+		"access": {
+			"type": "string",
+			"required": true
+		},
+		"interaction": {
+			"type": "string",
+			"required": true
+		},
+		"house_rules": {
+			"type": "string",
+			"required": true
+		},
+		"property_type": {
+			"type": "string",
+			"required": true
+		},
+		"room_type": {
+			"key": true,
+			"type": "string",
+			"required": true
+		},
+		"bed_type": {
+			"type": "string",
+			"required": true
+		},
+		"minimum_nights": {
+			"type": "string",
+			"required": true
+		},
+		"maximum_nights": {
+			"type": "string",
+			"required": true
+		},
+		"cancellation_policy": {
+			"type": "string",
+			"required": true
+		},
+		"last_scraped": {
+			"type": "Date",
+			"required": true
+		},
+		"calendar_last_scraped": {
+			"type": "Date",
+			"required": true
+		},
+		"first_review": {
+			"type": "Date",
+			"required": true
+		},
+		"last_review": {
+			"type": "Date",
+			"required": true
+		},
+		"accommodates": {
+			"type": "number",
+			"required": true
+		},
+		"bedrooms": {
+			"type": "number",
+			"required": true
+		},
+		"beds": {
+			"type": "number",
+			"required": true
+		},
+		"number_of_reviews": {
+			"type": "number",
+			"required": true
+		},
+		"bathrooms": {
+			"type": "Object",
+			"structure": {
+				"_bsontype": {
+					"type": "string",
+					"required": true
+				},
+				"bytes": {
+					"type": "Uint8Array",
+					"required": true
+				},
+				"toJSON": {
+					"type": "function",
+					"required": true
+				}
+			},
+			"required": true
+		},
+		"amenities": {
+			"type": "Array",
+			"required": true
+		},
+		"price": {
+			"type": "Object",
+			"structure": {
+				"_bsontype": {
+					"type": "string",
+					"required": true
+				},
+				"bytes": {
+					"type": "Uint8Array",
+					"required": true
+				},
+				"toJSON": {
+					"type": "function",
+					"required": true
+				}
+			},
+			"required": true
+		},
+		"security_deposit": {
+			"type": "Object",
+			"structure": {
+				"_bsontype": {
+					"type": "string",
+					"required": true
+				},
+				"bytes": {
+					"type": "Uint8Array",
+					"required": true
+				},
+				"toJSON": {
+					"type": "function",
+					"required": true
+				}
+			},
+			"required": true
+		},
+		"weekly_price": {
+			"type": "Object",
+			"structure": {
+				"_bsontype": {
+					"type": "string",
+					"required": true
+				},
+				"bytes": {
+					"type": "Uint8Array",
+					"required": true
+				},
+				"toJSON": {
+					"type": "function",
+					"required": true
+				}
+			},
+			"required": true
+		},
+		"cleaning_fee": {
+			"type": "Object",
+			"structure": {
+				"_bsontype": {
+					"type": "string",
+					"required": true
+				},
+				"bytes": {
+					"type": "Uint8Array",
+					"required": true
+				},
+				"toJSON": {
+					"type": "function",
+					"required": true
+				}
+			},
+			"required": true
+		},
+		"extra_people": {
+			"type": "Object",
+			"structure": {
+				"_bsontype": {
+					"type": "string",
+					"required": true
+				},
+				"bytes": {
+					"type": "Uint8Array",
+					"required": true
+				},
+				"toJSON": {
+					"type": "function",
+					"required": true
+				}
+			},
+			"required": true
+		},
+		"monthly_price": {
+			"type": "Object",
+			"structure": {
+				"_bsontype": {
+					"type": "string",
+					"required": true
+				},
+				"bytes": {
+					"type": "Uint8Array",
+					"required": true
+				},
+				"toJSON": {
+					"type": "function",
+					"required": true
+				}
+			},
+			"required": true
+		},
+		"guests_included": {
+			"type": "Object",
+			"structure": {
+				"_bsontype": {
+					"type": "string",
+					"required": true
+				},
+				"bytes": {
+					"type": "Uint8Array",
+					"required": true
+				},
+				"toJSON": {
+					"type": "function",
+					"required": true
+				}
+			},
+			"required": true
+		},
+		"images": {
+			"type": "Object",
+			"structure": {
+				"thumbnail_url": {
+					"type": "string",
+					"required": true
+				},
+				"medium_url": {
+					"type": "string",
+					"required": true
+				},
+				"picture_url": {
+					"type": "string",
+					"required": true
+				},
+				"xl_picture_url": {
+					"type": "string",
+					"required": true
+				}
+			},
+			"required": true
+		},
+		"host": {
+			"type": "Object",
+			"structure": {
+				"host_id": {
+					"type": "string",
+					"required": true
+				},
+				"host_url": {
+					"type": "string",
+					"required": true
+				},
+				"host_name": {
+					"key": true,
+					"type": "string",
+					"required": true
+				},
+				"host_location": {
+					"key": true,
+					"type": "string",
+					"required": true
+				},
+				"host_about": {
+					"type": "string",
+					"required": true
+				},
+				"host_thumbnail_url": {
+					"type": "string",
+					"required": true
+				},
+				"host_picture_url": {
+					"type": "string",
+					"required": true
+				},
+				"host_neighbourhood": {
+					"key": true,
+					"type": "string",
+					"required": true
+				},
+				"host_is_superhost": {
+					"type": "boolean",
+					"required": true
+				},
+				"host_has_profile_pic": {
+					"type": "boolean",
+					"required": true
+				},
+				"host_identity_verified": {
+					"type": "boolean",
+					"required": true
+				},
+				"host_listings_count": {
+					"type": "number",
+					"required": true
+				},
+				"host_total_listings_count": {
+					"type": "number",
+					"required": true
+				},
+				"host_verifications": {
+					"type": "Array",
+					"required": true
+				},
+				"host_response_time": {
+					"key": true,
+					"type": "string",
+					"required": true
+				},
+				"host_response_rate": {
+					"type": "number",
+					"required": true
+				}
+			},
+			"required": true
+		},
+		"address": {
+			"type": "Object",
+			"structure": {
+				"street": {
+					"type": "string",
+					"required": true
+				},
+				"suburb": {
+					"key": true,
+					"type": "string",
+					"required": true
+				},
+				"government_area": {
+					"key": true,
+					"type": "string",
+					"required": true
+				},
+				"market": {
+					"type": "string",
+					"required": true
+				},
+				"country": {
+					"type": "string",
+					"required": true
+				},
+				"country_code": {
+					"type": "string",
+					"required": true
+				},
+				"location": {
+					"type": "Object",
+					"structure": {
+						"type": {
+							"type": "string",
+							"required": true
+						},
+						"coordinates": {
+							"type": "Array",
+							"required": true
+						},
+						"is_location_exact": {
+							"type": "boolean",
+							"required": true
+						}
+					},
+					"required": true
+				}
+			},
+			"required": true
+		},
+		"availability": {
+			"type": "Object",
+			"structure": {
+				"availability_30": {
+					"type": "number",
+					"required": true
+				},
+				"availability_60": {
+					"type": "number",
+					"required": true
+				},
+				"availability_90": {
+					"type": "number",
+					"required": true
+				},
+				"availability_365": {
+					"type": "number",
+					"required": true
+				}
+			},
+			"required": true
+		},
+		"review_scores": {
+			"type": "Object",
+			"structure": {
+				"review_scores_accuracy": {
+					"type": "number",
+					"required": true
+				},
+				"review_scores_cleanliness": {
+					"type": "number",
+					"required": true
+				},
+				"review_scores_checkin": {
+					"type": "number",
+					"required": true
+				},
+				"review_scores_communication": {
+					"type": "number",
+					"required": true
+				},
+				"review_scores_location": {
+					"type": "number",
+					"required": true
+				},
+				"review_scores_value": {
+					"type": "number",
+					"required": true
+				},
+				"review_scores_rating": {
+					"type": "number",
+					"required": true
+				}
+			},
+			"required": true
+		},
+		"reviews": {
+			"type": "Array",
+			"required": true
+		}
+	}
+}

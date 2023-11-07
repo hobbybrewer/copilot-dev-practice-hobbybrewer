@@ -1,0 +1,54 @@
+{
+	"restaurants": {
+		"_id": {
+			"primaryKey": true,
+			"type": "Object",
+			"required": true
+		},
+		"address": {
+			"type": "Object",
+			"structure": {
+				"building": {
+					"type": "string",
+					"required": true
+				},
+				"coord": {
+					"type": "Array",
+					"required": true
+				},
+				"street": {
+					"key": true,
+					"type": "string",
+					"required": true
+				},
+				"zipcode": {
+					"type": "string",
+					"required": true
+				}
+			},
+			"required": true
+		},
+		"borough": {
+			"type": "string",
+			"required": true
+		},
+		"cuisine": {
+			"key": true,
+			"type": "string",
+			"required": true
+		},
+		"grades": {
+			"type": "Array",
+			"required": true
+		},
+		"name": {
+			"key": true,
+			"type": "string",
+			"required": true
+		},
+		"restaurant_id": {
+			"type": "string",
+			"required": true
+		}
+	}
+}

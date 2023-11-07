@@ -1,0 +1,401 @@
+
+echo -e 'eval "$(github-copilot-cli alias -- "$0")"' >> ~/.bashrc
+echo -e 'eval "$(github-copilot-cli alias -- "$0")"' >> ~/.zshrc
+
+code ~/.bashrc
+code ~/.zshrc
+
+sudo code ~/.bashrc
+sudo code ~/.zshrc
+
+mongoimport <options> <connection-string> <file>
+
+sudo service mongodb start
+
+mongoimport --collection=listingsAndReviews mongodb://127.0.0.1:27017/sample_airbnb sample_airbnb.json
+
+mongoimport --collection='listingsAndReviews' --file='sample_airbnb.json' --uri 'mongodb://127.0.0.1:27017/sample_airbnb'
+
+mongodb://127.0.0.1:27017/sample_airbnb
+
+export PATH=$PATH:/workspaces/Universe23-Proj1-MEN/mongodb-database-tools/bin
+
+tar -xvzf
+
+
+
+mongoexport --collection=<coll> <options> <connection-string>
+
+mongodb://127.0.0.1:27017/ghApp
+
+
+mongoexport --collection=listingsAndReviews -d=sample_airbnb -o=sample_airbnb.json
+
+mongoexport --collection=listingsAndReviews -d=sample_airbnb -o=sample_airbnb-1000.json --limit=1000
+mongoexport --collection=companies -d=sample_training -o=companies-1000.json --limit=1000
+
+
+extract-mongo-schema -d "mongodb://localhost:3001/meteor" -o schema.json
+
+
+export DB="sample_mflix"
+export COLLECTION="movies"
+echo "DB="$DB
+echo "COLLECTION="$COLLECTION
+mongoexport --collection="$COLLECTION" -d="$DB" -o="$COLLECTION".json
+mongoexport --collection="$COLLECTION" -d="$DB" -o="$COLLECTION"-1000.json --limit=1000
+
+
+extract-mongo-schema -d "mongodb://localhost:27017/$DB" -o $DB-schema.json
+extract-mongo-schema -d "mongodb://localhost:27017/$DB" -c "$COLLECTION" -o "$COLLECTION"-schema.json
+
+Hong Kong IP Address: 8.210.96.219
+Porta Portugal: 188.83.242.122
+Rio De Janeiro, BR: 200.20.0.88
+Barcelona, Spain: 2.152.105.111
+Beyoglu, Turkey:78.135.85.96
+
+Manhattan IP Address: 72.229.28.185
+New York City IP Address: 159.102.181.2
+Delhi: 103.48.198.141
+
+export PORT=8080
+export PORT=3000
+sudo kill -9 "sudo lsof -t -i:$PORT"
+
+git remote set-url origin https://github.com/dhruvg20-copilot/Copilot-Dev-Practices.git
+
+
+
+
+export db="sample_airbnb"
+export collection="listingsAndReviews"
+export file="./mongodb-dataset/sample_airbnb.json"
+echo $db
+echo $collection
+echo $file
+export uri="mongodb://127.0.0.1:27017/sample_airbnb"
+?? How to import into Mongodb
+?? mongodb import db=$db, collection=$collection, file=$file and uri=$uri
+?? mongodb import db=$db, collection=$collection and file=$file
+
+mongo sample_airbnb --eval "printjson(db.dropDatabase())"
+mongoimport --collection='listingsAndReviews' --file='mongodb-dataset/sample_airbnb.json' --uri 'mongodb://127.0.0.1:27017/sample_airbnb'
+
+?? mongodb drop db sample_airbnb
+
+first minify the response.json, and then use the json data as string input to Put request to http://localhost:8080/api/model/102995
+
+find . -name '*.js' | xargs wc -l | sort -hr
+
+/tests unit test - GET /api/model/ set x-forwarded-for-ip header 8.210.96.219, parse JSON response.text, and loop through array listingsAndReviews
+
+//expect to check listing.address for market=Hong Kong
+
+
+/tests unit test - GET /api/model/ set x-forwarded-for-ip header 8.210.96.219, parse JSON response.text and loop array response.text.listingsAndReviews
+
+/tests jest GET /api/model/ set x-forwarded-for-ip header 8.210.96.219
+1. GET /api/model/ set x-forwarded-for-ip header 8.210.96.219
+2. parse JSON response.text
+3. loop array response.text.listingsAndReviews
+
+/tests unit test - GET /api/model/{id} where id=102995, parse JSON response.text, and check name="UWS Brownstone Prime"
+
+
+
+export TITLE=11
+export REPO=Copilot-Dev-Practices
+export OWNER=dhruvg20-copilot
+gh api graphql -F query='
+  query($owner:String!, $repo:String!, $title:String!) {
+    repository(owner:$owner, name:$repo) {
+      issue(number:$title) {
+        id
+      }
+    }
+  }' -F owner=$OWNER -F repo=$REPO -F title=$TITLE | jq -r '.data.repository.issue.id'
+
+GITHUB_USER
+
+gh api graphql -F query='
+  query($owner:String!, $name:String!, $title:String!) {
+    repository(owner:$owner, name:$name) {
+      issue(number:1) {
+        title
+      }
+    }
+  }' -F owner=dhruvg20-copilot -F name=Copilot-Dev-Practices -F title="dhruvg20-activity-progress"
+
+  gh issue list -R dhruvg20-copilot/Copilot-Dev-Practices --search "dhruvg20-activity-progress in:title"
+
+  gh issue list -L 10000 -R dhruvg20-copilot/Copilot-Dev-Practices --json number,title --jq '.[] | select(.title | contains("dhruvg20-activity-progress"))'
+
+
+gh api --header 'Accept: application/vnd.github+json' --method POST /repos/dhruvg20-copilot/Copilot-Dev-Practices/issues -f title="${GITHUB_USER}-activity-progress" -f body="This is a test issue created by the REST API"
+gh issue list -L 10000 -R dhruvg20-copilot/Copilot-Dev-Practices --json number,title --jq --arg user $GITHUB_USER '.[] | select(.title | contains("$user-activity-progress"))'
+
+jq --arg env $ENV '.[$env]'
+export output=$(gh api graphql -f query='
+  query{
+    node(id: "PVT_kwDOB1l0iM4AXZry") {
+        ... on ProjectV2 {
+          items(first: 100) {
+            nodes{
+              id
+              fieldValues(first: 100) {
+                nodes{                
+                  ... on ProjectV2ItemFieldTextValue {
+                    text
+                    field {
+                      ... on ProjectV2FieldCommon {
+                        name
+                      }
+                    }
+                  }
+                  ... on ProjectV2ItemFieldDateValue {
+                    date
+                    field {
+                      ... on ProjectV2FieldCommon {
+                        name
+                      }
+                    }
+                  }
+                  ... on ProjectV2ItemFieldSingleSelectValue {
+                    name
+                    field {
+                      ... on ProjectV2FieldCommon {
+                        name
+                      }
+                    }
+                  }
+                }              
+              }
+            }
+          }
+        }
+      }
+    }' | jq '.data.node.items.nodes[] | select(.fieldValues.nodes[].text == env.ISSUE_NAME) | .id') && echo $output
+
+string='
+mutation {
+  updateProjectV2ItemFieldValue(
+    input: {
+      projectId: PROJECT_ID
+      itemId: "PVTI_lADOB1l0iM4AXZryzgKONv4"
+      fieldId: "PVTSSF_lADOB1l0iM4AXZryzgO9XBA"
+      value: {
+        singleSelectOptionId: "21d19c16"
+      }
+    }
+  ) {
+    projectV2Item {
+      id
+    }
+  }
+}
+'
+# Replace PROJECT_ID with Dhruv
+echo "$string" && string=$(echo "$string" | sed -e 's/PROJECT_ID/'"$PROJECT_ID"'/g') && echo "$string"
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+#token-projects — project, repo, write:org -> Codespaces Secret -> PROJECTS_TOKEN
+
+env | grep TOKEN
+export GITHUB_TOKEN_BK=$GITHUB_TOKEN
+export GITHUB_TOKEN=$PROJECTS_TOKEN
+env | grep TOKEN
+
+export PROJECT_NUM=2
+export ISSUE_NAME="${GITHUB_USER}-activity-progress"
+export OWNER="dhruvg20-copilot"
+export REPO="Copilot-Dev-Practices"
+echo $ISSUE_NAME
+echo $OWNER
+echo $REPO
+
+export ISSUE_NUMBER=$(gh issue list -L 10000 -R $OWNER/$REPO --json number,title --jq '.[] | select(.title | contains(env.ISSUE_NAME)) | .number') && echo $ISSUE_NUMBER
+
+if [ -z "$ISSUE_NUMBER" ]; then 
+  gh api --header 'Accept: application/vnd.github+json' --method POST /repos/$OWNER/$REPO/issues -f title="$ISSUE_NAME" -f body="This is a test issue created by the REST API"  -f project_id=$PROJECT_ID -f state="in_progress"
+else 
+  echo "ISSUE Already Exists"; 
+fi
+
+#gh api --header 'Accept: application/vnd.github+json' --method POST /repos/$OWNER/$REPO/issues -f title="$ISSUE_NAME" -f body="This is a test issue created by the REST API"  -f project_id=$PROJECT_ID -f state="in_progress"
+
+#export ISSUE_NUMBER=$(gh issue list -L 10000 -R $OWNER/$REPO --json number,title --jq '.[] | select(.title | contains(env.ISSUE_NAME)) | .number') && echo $ISSUE_NUMBER
+
+export GRAPHQL="\
+    query{\
+    organization(login: OWNER){\
+      projectV2(number: PROJECT_NUM) {\
+        id\
+      }\
+    }\
+  }";
+
+echo "$GRAPHQL" && GRAPHQL=$(echo "$GRAPHQL" | sed -e 's/OWNER/'\""$OWNER"\"'/g') && echo "$GRAPHQL"
+echo "$GRAPHQL" && GRAPHQL=$(echo "$GRAPHQL" | sed -e 's/PROJECT_NUM/'"$PROJECT_NUM"'/g') && echo "$GRAPHQL"
+
+export PROJECT_ID=$(gh api graphql -f query="$GRAPHQL"  | jq '.data.organization.projectV2.id') && echo $PROJECT_ID
+
+gh project item-add $PROJECT_NUM --owner $OWNER --url https://github.com/$OWNER/$REPO/issues/$ISSUE_NUMBER
+
+export GRAPHQL="
+  query{
+    node(id: PROJECT_ID) {
+        ... on ProjectV2 {
+          items(first: 100) {
+            nodes{
+              id
+              fieldValues(first: 100) {
+                nodes{                
+                  ... on ProjectV2ItemFieldTextValue {
+                    text
+                    field {
+                      ... on ProjectV2FieldCommon {
+                        name
+                      }
+                    }
+                  }
+                  ... on ProjectV2ItemFieldDateValue {
+                    date
+                    field {
+                      ... on ProjectV2FieldCommon {
+                        name
+                      }
+                    }
+                  }
+                  ... on ProjectV2ItemFieldSingleSelectValue {
+                    name
+                    field {
+                      ... on ProjectV2FieldCommon {
+                        name
+                      }
+                    }
+                  }
+                }              
+              }
+            }
+          }
+        }
+      }
+    }"
+echo "$GRAPHQL" && GRAPHQL=$(echo "$GRAPHQL" | sed -e 's/PROJECT_ID/'"$PROJECT_ID"'/g') && echo "$GRAPHQL"    
+export ISSUE_ID=$(gh api graphql -f query="$GRAPHQL" | jq '.data.node.items.nodes[] | select(.fieldValues.nodes[].text == env.ISSUE_NAME) | .id') && echo $ISSUE_ID
+
+
+PROJECT_ID=PVT_kwDOB1l0iM4AXZry
+PROJECT_ID=PVT_kwDOB1l0iM4AXa6z
+gh api graphql -f query='
+  query{
+  node(id: "PVT_kwDOB1l0iM4AXa6z") {
+    ... on ProjectV2 {
+      fields(first: 100) {
+        nodes {
+          ... on ProjectV2Field {
+            id
+            name
+          }
+          ... on ProjectV2IterationField {
+            id
+            name
+            configuration {
+              iterations {
+                startDate
+                id
+              }
+            }
+          }
+          ... on ProjectV2SingleSelectField {
+            id
+            name
+            options {
+              id
+              name
+            }
+          }
+        }
+      }
+    }
+  }
+}' > ./scripts/progress_project.json
+
+export CUSTOM_FIELD_ID="PVTSSF_lADOB1l0iM4AXZryzgO9XBA"
+export CUSTOM_FIELD_ID="\"$CUSTOM_FIELD_ID\"" && echo $CUSTOM_FIELD_ID
+export SELECTION_ID="eabbf033"
+export SELECTION_ID="\"$SELECTION_ID"\" && echo $SELECTION_ID
+export GRAPHQL="mutation { 
+    updateProjectV2ItemFieldValue( 
+      input: { 
+        projectId: PROJECT_ID 
+        itemId: ISSUE_ID
+        fieldId: CUSTOM_FIELD_ID
+        value: { 
+          singleSelectOptionId: SELECTION_ID
+        } 
+      } 
+    ) { 
+      projectV2Item { 
+        id 
+      } 
+    } 
+  }"
+
+echo "$GRAPHQL" && GRAPHQL=$(echo "$GRAPHQL" | sed -e 's/PROJECT_ID/'"$PROJECT_ID"'/g') && echo "$GRAPHQL"
+echo "$GRAPHQL" && GRAPHQL=$(echo "$GRAPHQL" | sed -e 's/ISSUE_ID/'"$ISSUE_ID"'/g') && echo "$GRAPHQL"
+echo "$GRAPHQL" && GRAPHQL=$(echo "$GRAPHQL" | sed -e 's/CUSTOM_FIELD_ID/'"$CUSTOM_FIELD_ID"'/g') && echo "$GRAPHQL"
+echo "$GRAPHQL" && GRAPHQL=$(echo "$GRAPHQL" | sed -e 's/SELECTION_ID/'"$SELECTION_ID"'/g') && echo "$GRAPHQL"
+
+gh api graphql -f query="$GRAPHQL"
+
+gh api graphql -f query='
+  mutation {
+    updateProjectV2ItemFieldValue(
+      input: {
+        projectId: "PVT_kwDOB1l0iM4AXZry"
+        itemId: "PVTI_lADOB1l0iM4AXZryzgKONv4"
+        fieldId: "PVTSSF_lADOB1l0iM4AXZryzgO9XBA"
+        value: { 
+          singleSelectOptionId: "21d19c16"        
+        }
+      }
+    ) {
+      projectV2Item {
+        id
+      }
+    }
+  }'
+
+
+
+
+
+env | grep TOKEN
+GITHUB_TOKEN=
+GITHUB_CODESPACE_TOKEN=
+
+alias cd_workshop='type cd_workshop && cd /workspaces/Copilot-Dev-Practices/'
+alias code_copilot_cli_1='type code_copilot_cli_1 && cd_workshop && code ./scripts/copilot_cli_1.sh'
+alias run_copilot_cli_1='type run_copilot_cli_1 && cd_workshop && ./scripts/copilot_cli_1.sh'
+alias code_copilot_cli_2='type code_copilot_cli_2 && cd_workshop && code ./scripts/copilot_cli_2.sh'
+alias run_copilot_cli_2='type run_copilot_cli_2 && cd_workshop && ./scripts/copilot_cli_2.sh'
+alias backend_npm_start='type backend_npm_start && cd_workshop && cd backend && npm start'
+alias frontend_npm_start='type frontend_npm_start && cd_workshop && ./scripts/progress_stage1.sh && cd frontend && npm start'
+alias code_copilot_cli_3='type code_copilot_cli_3 && cd_workshop && code ./scripts/copilot_cli_3.sh'
+alias run_copilot_cli_3='type run_copilot_cli_3 && cd_workshop && ./scripts/copilot_cli_3.sh'
+alias code_copilot_cli_4='type code_copilot_cli_4 && cd_workshop && code ./scripts/copilot_cli_4.sh'
+alias run_copilot_cli_4='type run_copilot_cli_4 && cd_workshop && ./scripts/copilot_cli_4.sh'
+alias code_copilot_cli_5='type code_copilot_cli_5 && cd_workshop && code ./scripts/copilot_cli_5.sh'
+alias run_copilot_cli_5='type run_copilot_cli_5 && cd_workshop && ./scripts/progress_stage2.sh &&./scripts/copilot_cli_5.sh'
+alias code_backend_geo_IP2Loc='type code_backend_geo_IP2Loc && cd_workshop && code ./backend/geolocation/IP2Location.js'
+alias code_backend_controller='type code_backend_controller && cd_workshop && code ./backend/app/controllers/model.controller.js'
+alias code_frontend_http-common='type code_backend_controller && cd_workshop && ./scripts/progress_stage4.sh && code ./frontend/src/http-common.js'
+alias code_branch_push='type code_branch_push && cd_workshop && code ./scripts/git_branch_push.sh'
+alias run_branch_push='type run_branch_push && cd_workshop && ./scripts/git_branch_push.sh'
+alias code_backend_routes='type code_backend_routes && cd_workshop && code ./backend/app/routes/model.routes.js'
+alias code_backend_tests='type code_backend_tests && cd_workshop && code ./backend/test/endpoint.test.js'
+alias run_backend_tests='type run_backend_tests && cd_workshop && cd backend && npm test'
+alias run_backend_tests_done='type run_backend_tests_done && cd_workshop && ./scripts/progress_stage6.sh && cd backend && npm test'
+

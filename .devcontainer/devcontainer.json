@@ -1,0 +1,30 @@
+{
+  "name": "Node.js",
+//"image": "mcr.microsoft.com/devcontainers/universal:2",	
+//"image": "mcr.microsoft.com/devcontainers/javascript-node",
+"build": { "dockerfile": "Dockerfile" },
+  "customizations": {
+      "vscode": {
+        "extensions": [
+          "github.copilot",
+          "github.copilot-chat"
+          //"github.copilot-labs"
+          //"humao.rest-client",
+          //"mongodb.mongodb-vscode"
+          ]
+      }
+    },
+    "appPort": [8080,3000],
+    "portsAttributes": {
+      "8080": {
+          "label": "backend"
+      },
+      "3000": {
+        "label": "frontend"
+      }
+  },
+  // Use 'postCreateCommand' to run commands after the container is created. 
+  "postCreateCommand": "/bin/bash scripts/install-env.sh && exit",
+  "postStartCommand": "/bin/bash scripts/start-env.sh && exit",
+  "postAttachCommand": "/bin/bash scripts/postAttachCommand.sh && exit"
+}

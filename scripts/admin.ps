@@ -1,0 +1,305 @@
+#!/usr/bin/env pwsh
+
+#./admin.ps create
+#./admin.ps delete
+#workshop_handles.data contains all the handles of the workshop participants
+
+# Variables
+$TARGET_REPO="Copilot-Dev-Practices-"
+$OWNER="dhruvg20-copilot"
+$OWNER="githubuniverseworkshops"
+$TEMPLATE_REPO="Copilot-Dev-Practices"
+$ACTION=$args[0]
+
+Write-Host $TARGET_REPO
+Write-Host $OWNER
+Write-Host $TEMPLATE_REPO
+Write-Host $ACTION
+
+#check if $ACTION is empty quit
+if ($ACTION -eq $null){
+    Write-Host "Please provide an action: `
+    create - create repos `
+    delete - delete repos `
+    issue-1 - create issue 1 `
+    issue-2 - create issue 2 `
+    close-all-issues - close all Progress issues `
+    add-users-copilot - activate copilot for all users `
+    remove-users-copilot - deactivate copilot for all users `
+    add-users-codespace - activate codespace for all users `
+    remove-users-codespace - deactivate codespace for all users `
+    "
+    exit 1
+}
+#exit
+
+if ($env:OPS_TOKEN -eq $null){
+    Write-Host "TOKEN not set"
+    exit 1
+}
+
+env | grep TOKEN
+$env:GITHUB_TOKEN_BK=$env:GITHUB_TOKEN
+$env:GITHUB_TOKEN=$env:OPS_TOKEN
+env | grep TOKEN
+
+cp .git/config .git/config_bk
+
+#parse and store in a variable print the file workshop_handles.data
+$workshop_handles = Get-Content -Path ./scripts/workshop_handles.data
+
+if ($ACTION -eq "create"){
+#iterate through the workshop_handles array and print each handle
+    Write-Host "CREATE REPOS"
+    foreach ($handle in $workshop_handles) {
+        Write-Host $handle
+        $TARGET_REPO_NAME = $TEMPLATE_REPO+"-"+$handle
+        Write-Host $TARGET_REPO_NAME
+
+        # GitHub CLI api
+        # https://cli.github.com/manual/gh_api
+
+        Write-Host "--method POST `
+        -H "Accept: application/vnd.github+json" `
+        -H "X-GitHub-Api-Version: 2022-11-28" `
+        /repos/$OWNER/$TEMPLATE_REPO/generate `
+        -f owner="$OWNER" `
+        -f name="$TARGET_REPO_NAME" `
+        -f description='GitHub Copilot lead to improvement in development practices' `
+        -F include_all_branches=false `
+        -F private=false"
+
+        gh api `
+        --method POST `
+        -H "Accept: application/vnd.github+json" `
+        -H "X-GitHub-Api-Version: 2022-11-28" `
+        /repos/$OWNER/$TEMPLATE_REPO/generate `
+        -f owner="$OWNER" `
+        -f name="$TARGET_REPO_NAME" `
+        -f description='GitHub Copilot lead to improvement in development practices' `
+        -F include_all_branches=false `
+        -F private=false     
+
+        Write-Host "gh api `
+        --method PUT `
+        -H "Accept: application/vnd.github+json" `
+        -H "X-GitHub-Api-Version: 2022-11-28" `
+        /repos/$OWNER/$TARGET_REPO_NAME/collaborators/$handle `
+        -f permission='Admin' "
+
+        gh api `
+        --method PUT `
+        -H "Accept: application/vnd.github+json" `
+        -H "X-GitHub-Api-Version: 2022-11-28" `
+        /repos/$OWNER/$TARGET_REPO_NAME/collaborators/$handle `
+        -f permission='Admin' 
+
+
+        Write-Host "gh api --header 'Accept: application/vnd.github+json' `
+            --method POST /repos/$OWNER/$TARGET_REPO_NAME/issues `
+            -f title="Post-requisite: This Repository would be deleted on 25th Nov 2023" `
+            -f body="Post-requisite: This Repository would be deleted on 25th Nov 2023. Please create a backup of this Repository." `
+            -f assignees=[\"$handle\"]"
+
+        gh api --header 'Accept: application/vnd.github+json' `
+            --method POST /repos/$OWNER/$TARGET_REPO_NAME/issues `
+            -f title="Post-requisite: This Repository would be deleted on 25th Nov 2023" `
+            -f body="**Post-requisite:** This Repository would be deleted on 25th Nov 2023. Please create a backup of this Repository." `
+            -f "assignees[]=$handle" 
+    }
+}
+
+if ($ACTION -eq "issue-1"){
+#iterate through the workshop_handles array and print each handle
+    Write-Host "CREATE REPOS"
+    foreach ($handle in $workshop_handles) {
+        Write-Host $handle
+        $TARGET_REPO_NAME = $TEMPLATE_REPO+"-"+$handle
+        Write-Host $TARGET_REPO_NAME        
+
+        Write-Host "gh api --header 'Accept: application/vnd.github+json' `
+            --method POST /repos/$OWNER/$TARGET_REPO_NAME/issues `
+            -f title="Post-requisite: This Repository would be deleted on 25th Nov 2023" `
+            -f body="Post-requisite: This Repository would be deleted on 25th Nov 2023. Please create a backup of this Repository." `
+            -f assignees=[\"$handle\"]"
+
+        gh api --header 'Accept: application/vnd.github+json' `
+            --method POST /repos/$OWNER/$TARGET_REPO_NAME/issues `
+            -f title="Post-requisite: This Repository would be deleted on 25th Nov 2023" `
+            -f body="**Post-requisite:** This Repository would be deleted on 25th Nov 2023. Please create a backup of this Repository." `
+            -f "assignees[]=$handle" 
+    }
+}
+
+if ($ACTION -eq "issue-2"){
+#iterate through the workshop_handles array and print each handle
+    Write-Host "CREATE REPOS"
+    foreach ($handle in $workshop_handles) {
+        Write-Host $handle
+        $TARGET_REPO_NAME = $TEMPLATE_REPO+"-"+$handle
+        Write-Host $TARGET_REPO_NAME        
+
+        Write-Host "gh api --header 'Accept: application/vnd.github+json' `
+            --method POST /repos/$OWNER/$TARGET_REPO_NAME/issues `
+            -f title="Final - Post-requisite: This Repository would be deleted on 25th Nov 2023" `
+            -f body="Final - Post-requisite: This Repository would be deleted on 25th Nov 2023. Please create a backup of this Repository." `
+            -f assignees=[\"$handle\"]"
+
+        gh api --header 'Accept: application/vnd.github+json' `
+            --method POST /repos/$OWNER/$TARGET_REPO_NAME/issues `
+            -f title="Final - Post-requisite: This Repository would be deleted on 25th Nov 2023" `
+            -f body="**Final - Post-requisite:** This Repository would be deleted on 25th Nov 2023. Please create a backup of this Repository." `
+            -f "assignees[]=$handle" 
+    }
+}
+
+if ($ACTION -eq "delete"){
+    Write-Host "DELETE REPOS"
+    foreach ($handle in $workshop_handles) {
+        Write-Host $handle
+        $TARGET_REPO_NAME = $TEMPLATE_REPO+"-"+$handle
+        Write-Host $TARGET_REPO_NAME
+
+        Write-Host "--method DELETE `
+        -H "Accept: application/vnd.github+json" `
+        -H "X-GitHub-Api-Version: 2022-11-28" `
+        /repos/$OWNER/$TARGET_REPO_NAME"
+
+        gh api `
+        --method DELETE `
+        -H "Accept: application/vnd.github+json" `
+        -H "X-GitHub-Api-Version: 2022-11-28" `
+        /repos/$OWNER/$TARGET_REPO_NAME
+    }
+}
+
+if ($ACTION -eq "close-all-issues"){
+    Write-Host "close all Progress issues"
+
+    $OWNER="dhruvg20-copilot"
+    $REPO="Copilot-Dev-Practices-Progress"
+
+    $ISSUES  = gh api `
+    -H "Accept: application/vnd.github+json" `
+    -H "X-GitHub-Api-Version: 2022-11-28" `
+    /repos/$OWNER/$REPO/issues?state=open
+
+    $ISSUES = $ISSUES | ConvertFrom-Json
+    Write-Host $ISSUES.GetType()
+
+    foreach ($issue in $ISSUES) {
+        
+        $IssueNum = $issue.number;
+        Write-Host "issue.number: "+$IssueNum;
+        Write-Host "gh api `
+            --method PATCH `
+            -H "Accept: application/vnd.github+json" `
+            -H "X-GitHub-Api-Version: 2022-11-28" `
+            /repos/$OWNER/$REPO/issues/$IssueNum `
+            -f state='closed'"
+        
+        gh api `
+            --method PATCH `
+            -H "Accept: application/vnd.github+json" `
+            -H "X-GitHub-Api-Version: 2022-11-28" `
+            /repos/$OWNER/$REPO/issues/$IssueNum `
+            -f state='closed' 
+        
+    }
+}
+
+if ($ACTION -eq "add-users-copilot"){
+    Write-Host "activate copilot for all users"
+    foreach ($handle in $workshop_handles) {
+        Write-Host $handle
+
+        Write-Host 'gh api `
+            --method POST `
+            -H "Accept: application/vnd.github+json" `
+            -H "X-GitHub-Api-Version: 2022-11-28" `
+            /orgs/ORG/copilot/billing/selected_users `
+            -f "selected_usernames[]=${handle}"`'
+
+        gh api `
+            --method POST `
+            -H "Accept: application/vnd.github+json" `
+            -H "X-GitHub-Api-Version: 2022-11-28" `
+            /orgs/$OWNER/copilot/billing/selected_users `
+            -f "selected_usernames[]=${handle}"
+    }
+
+}
+
+if ($ACTION -eq "remove-users-copilot"){
+    Write-Host "deactivate copilot for all users"
+    foreach ($handle in $workshop_handles) {
+        Write-Host $handle
+
+        echo "selected_usernames[]=${handle}"
+
+        echo 'gh api `
+            --method DELETE `
+            -H "Accept: application/vnd.github+json" `
+            -H "X-GitHub-Api-Version: 2022-11-28" `
+            /orgs/${OWNER}/copilot/billing/selected_users `
+            -f "selected_usernames[]='$handle'"'
+
+        gh api `
+            --method DELETE `
+            -H "Accept: application/vnd.github+json" `
+            -H "X-GitHub-Api-Version: 2022-11-28" `
+            /orgs/$OWNER/copilot/billing/selected_users `
+            -f "selected_usernames[]=${handle}"
+    }
+}
+
+if ($ACTION -eq "add-users-codespace"){
+    Write-Host "activate codespace for all users"
+    foreach ($handle in $workshop_handles) {
+        Write-Host $handle
+
+        Write-Host 'gh api `
+            --method POST `
+            -H "Accept: application/vnd.github+json" `
+            -H "X-GitHub-Api-Version: 2022-11-28" `
+            /orgs/${OWNER}/codespaces/access/selected_users `
+            -f "selected_usernames[]=${handle}"`'
+
+        gh api `
+            --method POST `
+            -H "Accept: application/vnd.github+json" `
+            -H "X-GitHub-Api-Version: 2022-11-28" `
+            /orgs/$OWNER/codespaces/access/selected_users `
+            -f "selected_usernames[]=${handle}"
+    }
+
+}
+
+if ($ACTION -eq "remove-users-codespace"){
+    Write-Host "deactivate codespace for all users"
+    foreach ($handle in $workshop_handles) {
+        Write-Host $handle
+
+        echo "selected_usernames[]=${handle}"
+
+        echo 'gh api `
+            --method DELETE `
+            -H "Accept: application/vnd.github+json" `
+            -H "X-GitHub-Api-Version: 2022-11-28" `
+            /orgs/${OWNER}/codespaces/access/selected_users `
+            -f "selected_usernames[]='$handle'"'
+
+        gh api `
+            --method DELETE `
+            -H "Accept: application/vnd.github+json" `
+            -H "X-GitHub-Api-Version: 2022-11-28" `
+            /orgs/$OWNER/codespaces/access/selected_users `
+            -f "selected_usernames[]=${handle}"
+    }
+}
+
+env | grep TOKEN
+
+$env:GITHUB_TOKEN=$env:GITHUB_TOKEN_BK
+
+env | grep TOKEN

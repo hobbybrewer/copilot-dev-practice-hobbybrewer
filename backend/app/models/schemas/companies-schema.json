@@ -1,0 +1,266 @@
+{
+	"companies": {
+		"_id": {
+			"primaryKey": true,
+			"type": "Object",
+			"required": true
+		},
+		"name": {
+			"key": true,
+			"type": "string",
+			"required": true
+		},
+		"permalink": {
+			"key": true,
+			"type": "string",
+			"required": true
+		},
+		"crunchbase_url": {
+			"type": "string",
+			"required": true
+		},
+		"homepage_url": {
+			"type": "string",
+			"required": true
+		},
+		"blog_url": {
+			"type": "string",
+			"required": true
+		},
+		"blog_feed_url": {
+			"type": "string",
+			"required": false
+		},
+		"twitter_username": {
+			"key": true,
+			"type": "string",
+			"required": false
+		},
+		"category_code": {
+			"type": "string",
+			"required": true
+		},
+		"number_of_employees": {
+			"type": "number",
+			"required": false
+		},
+		"founded_year": {
+			"type": "number",
+			"required": false
+		},
+		"founded_month": {
+			"type": "number",
+			"required": false
+		},
+		"founded_day": {
+			"type": "number",
+			"required": false
+		},
+		"deadpooled_year": {
+			"type": "number",
+			"required": false
+		},
+		"tag_list": {
+			"type": "string",
+			"required": false
+		},
+		"alias_list": {
+			"key": true,
+			"type": "string",
+			"required": false
+		},
+		"email_address": {
+			"key": true,
+			"type": "string",
+			"required": false
+		},
+		"phone_number": {
+			"key": true,
+			"type": "string",
+			"required": false
+		},
+		"deadpooled_month": {
+			"type": "undefined",
+			"required": false
+		},
+		"deadpooled_day": {
+			"type": "undefined",
+			"required": false
+		},
+		"deadpooled_url": {
+			"type": "string",
+			"required": false
+		},
+		"description": {
+			"type": "string",
+			"required": false
+		},
+		"created_at": {
+			"type": "string",
+			"required": true
+		},
+		"updated_at": {
+			"type": "string",
+			"required": true
+		},
+		"overview": {
+			"type": "string",
+			"required": false
+		},
+		"image": {
+			"type": "Object",
+			"structure": {
+				"available_sizes": {
+					"type": "Array",
+					"required": true
+				},
+				"attribution": {
+					"type": "undefined",
+					"required": false
+				}
+			},
+			"required": false
+		},
+		"products": {
+			"type": "Array",
+			"required": true
+		},
+		"relationships": {
+			"type": "Array",
+			"required": true
+		},
+		"competitions": {
+			"type": "Array",
+			"required": true
+		},
+		"providerships": {
+			"type": "Array",
+			"required": true
+		},
+		"total_money_raised": {
+			"type": "string",
+			"required": true
+		},
+		"funding_rounds": {
+			"type": "Array",
+			"required": true
+		},
+		"investments": {
+			"type": "Array",
+			"required": true
+		},
+		"acquisition": {
+			"type": "Object",
+			"structure": {
+				"price_amount": {
+					"type": "number",
+					"required": false
+				},
+				"price_currency_code": {
+					"type": "string",
+					"required": true
+				},
+				"term_code": {
+					"type": "string",
+					"required": false
+				},
+				"source_url": {
+					"type": "string",
+					"required": false
+				},
+				"source_description": {
+					"key": true,
+					"type": "string",
+					"required": false
+				},
+				"acquired_year": {
+					"type": "number",
+					"required": true
+				},
+				"acquired_month": {
+					"type": "number",
+					"required": true
+				},
+				"acquired_day": {
+					"type": "number",
+					"required": false
+				},
+				"acquiring_company": {
+					"type": "Object",
+					"structure": {
+						"name": {
+							"key": true,
+							"type": "string",
+							"required": true
+						},
+						"permalink": {
+							"key": true,
+							"type": "string",
+							"required": true
+						}
+					},
+					"required": true
+				}
+			},
+			"required": false
+		},
+		"acquisitions": {
+			"type": "Array",
+			"required": true
+		},
+		"offices": {
+			"type": "Array",
+			"required": true
+		},
+		"milestones": {
+			"type": "Array",
+			"required": true
+		},
+		"ipo": {
+			"type": "Object",
+			"structure": {
+				"valuation_amount": {
+					"type": "number",
+					"required": false
+				},
+				"valuation_currency_code": {
+					"type": "string",
+					"required": true
+				},
+				"pub_year": {
+					"type": "number",
+					"required": false
+				},
+				"pub_month": {
+					"type": "number",
+					"required": false
+				},
+				"pub_day": {
+					"type": "number",
+					"required": false
+				},
+				"stock_symbol": {
+					"type": "string",
+					"required": true
+				}
+			},
+			"required": false
+		},
+		"video_embeds": {
+			"type": "Array",
+			"required": true
+		},
+		"screenshots": {
+			"type": "Array",
+			"required": true
+		},
+		"external_links": {
+			"type": "Array",
+			"required": true
+		},
+		"partners": {
+			"type": "Array",
+			"required": true
+		}
+	}
+}
